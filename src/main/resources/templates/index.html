@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>チャットルーム</title>
+</head>
+
+<body>
+	<h1>チャットルーム</h1>
+	 <!-- 名前とチャット内容の入力フォーム -->
+	 !-- 名前とチャット内容の入力フォーム -->
+	 <form action="/" method="post" th:object="${chatForm}"> <!-- ← ここも一致 -->
+	     <input type="text" th:field="*{name}" placeholder="お名前" required>
+	     <input type="text" th:field="*{comment}" placeholder="コメント：500文字まで。Enterキーでも投稿できます。" maxlength="500" required>
+	     <button type="submit">投稿</button>
+	 </form>
+
+
+
+	    <!-- 投稿されたチャット一覧の表示（例） -->
+	    <div th:each="c : ${chatList}">
+	        <p><strong th:text="${c.name}">名前</strong>：<span th:text="${c.comment}">コメント</span></p>
+	    </div>
+	</body>
+   
+
+</html>
